@@ -121,14 +121,12 @@ export const updateBudget = async (userId, category, budgetData) => {
   // Update budget amount if provided
   if (budgetData.amount !== undefined) {
     budget.amount = budgetData.amount;
-    // Reset notifications if budget is increased
-    if (budget.amount > budget.currentSpending) {
-      const percentage = (budget.currentSpending / budget.amount) * 100;
-      budget.notifications = {
-        eightyPercent: percentage >= 80,
-        hundredPercent: percentage >= 100,
-      };
-    }
+    // Always recalculate notifications when budget amount changes
+    const percentage = (budget.currentSpending / budget.amount) * 100;
+    budget.notifications = {
+      eightyPercent: percentage >= 80,
+      hundredPercent: percentage >= 100,
+    };
   }
 
   await budget.save();

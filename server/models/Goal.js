@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const goalSchema = new mongoose.Schema(
   {
@@ -67,4 +67,4 @@ goalSchema.index({ user: 1, status: 1 });
 
 const Goal = mongoose.model("Goal", goalSchema);
 
-module.exports = Goal;
+export default Goal;
