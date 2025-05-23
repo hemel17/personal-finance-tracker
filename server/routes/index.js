@@ -5,11 +5,13 @@ import authRouter from "./auth.js";
 import userRouter from "./user.js";
 import incomeRouter from "./income.js";
 import expenseRouter from "./expense.js";
+import budgetRouter from "./budget.js";
 
 router.use("/api/auth", authRouter);
 router.use("/api/user", userRouter);
 router.use("/api/income", incomeRouter);
 router.use("/api/expense", expenseRouter);
+router.use("/api/budget", budgetRouter);
 
 router.get("/", (_req, res) => {
   res.status(200).json({
