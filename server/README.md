@@ -1,6 +1,6 @@
 # Personal Finance Tracker - Backend API
 
-A robust Node.js backend API for managing personal finances, featuring expense tracking, income management, budgeting, and financial analytics.
+A robust Node.js backend API for managing personal finances, featuring expense tracking, income management, and budgeting.
 
 ## Features
 
@@ -28,10 +28,18 @@ A robust Node.js backend API for managing personal finances, featuring expense t
   - Track spending against budgets
   - Receive notifications at 80% and 100% budget thresholds
 
+- **Goals Management**
+
+  - Set and track financial savings goals
+  - Monitor progress towards targets
+  - Manage multiple goal categories
+  - Receive goal achievement notifications
+
 - **Email Notifications**
   - Automated alerts for budget thresholds
   - Transaction confirmation emails
   - Account verification and password reset emails
+  - Goal progress and achievement notifications
 
 ## Technology Stack
 
@@ -54,7 +62,7 @@ A robust Node.js backend API for managing personal finances, featuring expense t
 1. Clone the repository
 2. Install dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 3. Create a `.env` file in the root directory with the following variables:
 
@@ -84,13 +92,13 @@ A robust Node.js backend API for managing personal finances, featuring expense t
 ### Development Mode
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ### Production Mode
 
 ```bash
-npm start
+yarn start
 ```
 
 ## API Endpoints
@@ -99,9 +107,10 @@ npm start
 
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - User login
-- `POST /api/auth/verify-email` - Verify email address
+- `GET /api/auth/verify-email/:token` - Verify email address
 - `POST /api/auth/forgot-password` - Request password reset
-- `POST /api/auth/reset-password` - Reset password
+- `POST /api/auth/reset-password/:token` - Reset password
+- `POST /api/auth/logout` - User logout (requires authentication)
 
 ### User Profile
 
@@ -110,33 +119,27 @@ npm start
 
 ### Expenses
 
-- `POST /api/expenses` - Create new expense
-- `GET /api/expenses` - Get all expenses
-- `GET /api/expenses/:id` - Get specific expense
-- `PUT /api/expenses/:id` - Update expense
-- `DELETE /api/expenses/:id` - Delete expense
+- `POST /api/expense/add` - Create new expense
+- `GET /api/expense/all` - Get all expenses
+- `GET /api/expense/:id` - Get specific expense
+- `PATCH /api/expense/update/:id` - Update expense
+- `DELETE /api/expense/delete/:id` - Delete expense
 
 ### Income
 
-- `POST /api/income` - Record new income
-- `GET /api/income` - Get all income records
+- `POST /api/income/add` - Record new income
+- `GET /api/income/all` - Get all income records
 - `GET /api/income/:id` - Get specific income record
-- `PUT /api/income/:id` - Update income record
-- `DELETE /api/income/:id` - Delete income record
+- `PATCH /api/income/update/:id` - Update income record
+- `DELETE /api/income/delete/:id` - Delete income record
 
 ### Budgets
 
-- `POST /api/budgets` - Create new budget
-- `GET /api/budgets` - Get all budgets
-- `GET /api/budgets/:id` - Get specific budget
-- `PUT /api/budgets/:id` - Update budget
-- `DELETE /api/budgets/:id` - Delete budget
-
-### Analytics
-
-- `GET /api/analytics/expenses` - Get expense analytics
-- `GET /api/analytics/income` - Get income analytics
-- `GET /api/analytics/budget` - Get budget analytics
+- `POST /api/budget/add` - Create new budget
+- `GET /api/budget/all` - Get all budgets
+- `GET /api/budget/:category` - Get specific budget by category
+- `PATCH /api/budget/:category` - Update budget
+- `DELETE /api/budget/:category` - Delete budget
 
 ## Data Models
 
