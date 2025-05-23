@@ -64,7 +64,6 @@ export const updateIncome = async (userId, incomeId, updates) => {
 };
 
 export const deleteIncome = async (userId, incomeId) => {
-  console.log(" income id : ", incomeId);
   const income = await Income.findOneAndDelete({ _id: incomeId, user: userId });
   if (!income) {
     throw createError("Income not found", 404);
