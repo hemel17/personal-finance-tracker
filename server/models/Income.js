@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const incomeSchema = new mongoose.Schema(
   {
@@ -44,4 +44,4 @@ incomeSchema.index({ paymentMethod: 1 });
 
 const Income = mongoose.model("Income", incomeSchema);
 
-module.exports = Income;
+export default Income;

@@ -2,8 +2,12 @@ import { Router } from "express";
 const router = Router();
 import mongoose from "mongoose";
 import authRouter from "./auth.js";
+import userRouter from "./user.js";
+import incomeRouter from "./income.js";
 
 router.use("/api/auth", authRouter);
+router.use("/api/user", userRouter);
+router.use("/api/income", incomeRouter);
 
 router.get("/", (_req, res) => {
   res.status(200).json({
