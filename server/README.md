@@ -141,6 +141,14 @@ yarn start
 - `PATCH /api/budget/:category` - Update budget
 - `DELETE /api/budget/:category` - Delete budget
 
+### Goal
+
+- `POST /api/goal/add` - Create new goal
+- `GET /api/goal/all` - Get all goals
+- `GET /api/goal/:id` - Get specific goal
+- `PATCH /api/goal/update/:id` - Update goal record
+- `DELETE /api/goal/delete/:id` - Delete goal record
+
 ## Data Models
 
 ### Budget Model

@@ -1,5 +1,5 @@
 import express from "express";
-import { auth } from "../middlewares/auth.js";
+import authenticate from "../middlewares/authenticate.js";
 import {
   createGoal,
   getGoals,
@@ -10,12 +10,12 @@ import {
 
 const router = express.Router();
 
-router.use(auth);
+router.use(authenticate);
 
-router.post("/", createGoal);
-router.get("/", getGoals);
+router.post("/add", createGoal);
+router.get("/all", getGoals);
 router.get("/:goalId", getGoalById);
-router.patch("/:goalId", updateGoal);
-router.delete("/:goalId", deleteGoal);
+router.patch("/update/:goalId", updateGoal);
+router.delete("/delete/:goalId", deleteGoal);
 
 export default router;

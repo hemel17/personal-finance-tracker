@@ -9,8 +9,9 @@ import connectDB from "./database/index.js";
   try {
     await connectDB();
     console.log("database is connected");
-    server.listen(port, () => {
+    server.listen(port, "0.0.0.0", () => {
       console.log(`server is running at port : ${port}`);
+      console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
     });
   } catch (error) {
     console.log("Failed to start the server!", error);

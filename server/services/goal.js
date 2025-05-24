@@ -1,5 +1,5 @@
 import Goal from "../models/Goal.js";
-import createError from "../utils/createError.js";
+import createError from "../utils/error.js";
 
 export const createGoal = async (userId, goalData) => {
   const goal = await Goal.create({

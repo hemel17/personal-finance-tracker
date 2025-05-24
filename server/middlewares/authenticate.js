@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config({ path: "./.env" });
 import asyncHandler from "./asyncHandler.js";
 import createError from "../utils/error.js";
 import jwt from "jsonwebtoken";
@@ -80,13 +82,15 @@ async function tryRefreshToken(req, res, next) {
 
         res.cookie("token", newToken, {
           httpOnly: true,
-          secure: false,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
           maxAge: 1 * 24 * 60 * 60 * 1000,
         });
 
         res.cookie("refreshToken", newRefreshToken, {
           httpOnly: true,
-          secure: false,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
           maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
